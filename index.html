@@ -1,0 +1,531 @@
+
+
+
+
+
+
+CEYLONTOOLZA PROJECT SOURCE FILES
+Copy each section into a file matching the FILE name shown.
+
+
+========================================================================================
+FILE: index.html
+========================================================================================
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="CeylonToolza — Your Digital Tools, All in One Place.">
+  <title>CeylonToolza | Your Digital Tools, All in One Place</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-mark">C</span><span>Ceylon<span class="brand-blue">Toolza</span><small>YOUR DIGITAL WORKSPACE</small></span></a>
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">☰</button>
+  <nav id="mainNav">
+    <a href="#home" data-i18n="navHome">Home</a><a href="#tools" data-i18n="navTools">All Tools</a>
+    <a href="#pricing" data-i18n="navPricing">Pricing</a><a href="#about" data-i18n="navAbout">About Us</a>
+    <a href="#contact" data-i18n="navContact">Contact</a>
+    <select id="languageSelect" aria-label="Language"><option value="en">English</option><option value="si">සිංහල</option></select>
+    <button class="btn btn-ghost" id="loginBtn" data-i18n="login">Log in</button><button class="btn btn-primary" id="startBtn" data-i18n="getStarted">Get Started</button>
+  </nav>
+</header>
+<main>
+<section class="hero" id="home">
+  <div class="hero-copy"><div class="eyebrow"><span class="pulse"></span> SMART TOOLS. SIMPLE WORKFLOWS.</div>
+    <h1 data-i18n="heroTitle">Everything You Need.<br><span>One Smart Platform.</span></h1>
+    <p data-i18n="heroText">Create, convert, design and manage your digital work with CeylonToolza.</p>
+    <div class="hero-actions"><a class="btn btn-primary btn-lg" href="#tools" data-i18n="explore">Explore Tools →</a><button class="btn btn-light btn-lg" id="heroStart" data-i18n="getStarted">Get Started</button></div>
+    <div class="trust-line"><span>✓</span> Tools for individuals, creators and businesses</div>
+  </div>
+  <div class="hero-art" aria-label="Digital tools illustration"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+    <div class="float-card card-pdf"><b class="tile purple">PDF</b><span><strong>PDF Studio</strong><small>Merge · Split · Compress</small></span></div>
+    <div class="float-card card-image"><b class="tile blue">▧</b><span><strong>Image Tools</strong><small>Resize · Convert · Optimize</small></span></div>
+    <div class="float-card card-shop"><b class="tile green">↗</b><span><strong>Shop Manager</strong><small>Sales · Income · Reports</small></span></div>
+    <div class="center-orb"><div class="orb-icon">✦</div><strong>One platform</strong><small>Endless possibilities</small></div>
+  </div>
+</section>
+<section class="stats-strip"><div><strong>One workspace</strong><span>For everyday digital tasks</span></div><div><strong>Simple workflows</strong><span>Less time, more progress</span></div><div><strong>Built for Sri Lanka</strong><span>English and Sinhala interface</span></div></section>
+<section class="section" id="tools"><div class="section-heading"><div><div class="eyebrow">YOUR TOOLKIT</div><h2>Explore powerful tools</h2><p>Find the right tool and get your work done.</p></div><div class="search-wrap"><span>⌕</span><input id="toolSearch" placeholder="Search tools..." aria-label="Search tools"></div></div>
+  <div class="category-tabs" id="categoryTabs"><button class="active" data-category="All">All tools</button><button data-category="PDF">PDF</button><button data-category="Image">Image</button><button data-category="Documents">Documents</button><button data-category="Other">Other</button></div>
+  <div class="tool-grid" id="toolGrid"></div>
+</section>
+<section class="section soft-section" id="about"><div class="section-heading centered"><div class="eyebrow">WHY CEYLONTOOLZA</div><h2>Make digital work feel effortless.</h2><p>A practical toolkit for your personal projects and growing business.</p></div>
+  <div class="benefit-grid"><article class="benefit"><div class="benefit-icon">⚡</div><h3>Simple to use</h3><p>Clear interfaces designed to help you finish tasks without unnecessary complexity.</p></article><article class="benefit"><div class="benefit-icon">🔒</div><h3>Privacy-conscious</h3><p>Account data and private documents are designed to be protected by access policies.</p></article><article class="benefit"><div class="benefit-icon">📈</div><h3>Grow with your work</h3><p>Start with essential tools and upgrade when your workflow needs more capacity.</p></article></div>
+</section>
+<section class="section" id="pricing"><div class="section-heading centered"><div class="eyebrow">SIMPLE MEMBERSHIPS</div><h2>Choose the plan that fits.</h2><p>Plan prices and limits are managed by the platform owner.</p></div><div class="pricing-grid" id="pricingGrid"><div class="plan-card"><span class="plan-label">FREE</span><h3>Free</h3><div class="price">Rs. 0</div><p>Get started with essential tools.</p><ul><li>Basic tools</li><li>Limited daily usage</li><li>User dashboard</li></ul><button class="btn btn-light full" data-plan="free">Get started</button></div><div class="plan-card featured"><span class="plan-label">MOST POPULAR</span><h3>Pro</h3><div class="price" id="proPrice">Price set by owner</div><p>For people who need more from their toolkit.</p><ul><li>Premium PDF tools</li><li>Business document makers</li><li>Higher usage limits</li></ul><button class="btn btn-primary full" data-plan="pro">Choose Pro</button></div><div class="plan-card"><span class="plan-label">MAXIMUM ACCESS</span><h3>Ultimate</h3><div class="price" id="ultimatePrice">Price set by owner</div><p>More capacity for advanced workflows.</p><ul><li>All premium tools</li><li>Bulk processing where supported</li><li>Priority support</li></ul><button class="btn btn-light full" data-plan="ultimate">Choose Ultimate</button></div></div></section>
+<section class="cta-band" id="contact"><div><div class="eyebrow">READY WHEN YOU ARE</div><h2>Bring your digital work together.</h2><p>Start exploring CeylonToolza today.</p></div><button class="btn btn-white btn-lg" id="ctaStart">Create an account →</button></section>
+</main>
+<footer><a class="brand footer-brand" href="#"><span class="brand-mark">C</span><span>Ceylon<span class="brand-blue">Toolza</span><small>YOUR DIGITAL WORKSPACE</small></span></a><p>Your Digital Tools, All in One Place.</p><div class="footer-links"><a href="#about">About</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a><a href="pages/privacy.html">Privacy</a><a href="pages/terms.html">Terms</a></div><small>© <span id="year"></span> CeylonToolza. All rights reserved.</small></footer>
+<div class="modal-backdrop" id="authModal" hidden><section class="modal"><button class="modal-close" id="closeModal" aria-label="Close">×</button><div class="eyebrow">WELCOME TO CEYLONTOOLZA</div><h2 id="authTitle">Create your account</h2><p id="authMessage">Sign in or register to access your workspace.</p><form id="authForm"><label id="nameLabel">Full name<input id="fullName" autocomplete="name"></label><label>Email address<input id="email" type="email" required autocomplete="email"></label><label>Password<input id="password" type="password" required minlength="8" autocomplete="new-password"></label><label id="confirmLabel">Confirm password<input id="confirmPassword" type="password" minlength="8"></label><label class="check-label"><input type="checkbox" id="termsCheck"> I agree to the Terms and Conditions</label><button class="btn btn-primary full" type="submit" id="authSubmit">Create account</button><button class="text-button" type="button" id="switchAuth">Already have an account? Log in</button></form><div class="notice" id="authNotice" role="status"></div></section></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body></html>
+
+========================================================================================
+FILE: style.css
+========================================================================================
+
+*{box-sizing:border-box} :root{--ink:#13213b;--muted:#71809a;--blue:#2463eb;--blue2:#4d83ff;--line:#e8edf5;--bg:#fff;--soft:#f5f8ff}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:"DM Sans","Noto Sans Sinhala",sans-serif;background:#fff}a{color:inherit;text-decoration:none}button,input,select{font:inherit}.topbar{height:82px;display:flex;align-items:center;justify-content:space-between;padding:0 6.5%;border-bottom:1px solid #eff2f7;background:#ffffffed;position:sticky;top:0;z-index:20;backdrop-filter:blur(12px)}.brand{display:flex;gap:11px;align-items:center;font-size:20px;font-weight:800;letter-spacing:-.7px}.brand-mark{width:39px;height:39px;border-radius:12px;background:linear-gradient(135deg,#2463eb,#6b9cff);color:white;display:grid;place-items:center;font-size:23px;box-shadow:0 7px 16px #2463eb35}.brand-blue{color:var(--blue)}.brand small{display:block;font-size:8px;letter-spacing:1.5px;color:#8a97ad;font-weight:700;margin-top:1px}.topbar nav{display:flex;align-items:center;gap:27px;font-size:13px;font-weight:600;color:#596780}.topbar nav a:hover{color:var(--blue)}nav select{border:0;color:#596780;background:transparent;cursor:pointer}.btn{border:0;border-radius:10px;padding:11px 17px;font-weight:700;font-size:13px;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;justify-content:center}.btn:hover{transform:translateY(-2px)}.btn-primary{background:var(--blue);color:white;box-shadow:0 7px 18px #2463eb30}.btn-ghost{background:transparent;color:#52617a}.btn-light{background:#eef3ff;color:#245bd2}.btn-lg{padding:15px 22px}.btn-white{background:white;color:#245bd2}.full{width:100%}.mobile-toggle{display:none;background:none;border:0;font-size:24px}.hero{padding:85px 9% 76px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:45px;min-height:560px;background:radial-gradient(ellipse at 78% 42%,#e8f0ff 0,transparent 43%),linear-gradient(110deg,#fff 50%,#f9fbff)}.eyebrow{font-size:10px;font-weight:800;letter-spacing:1.7px;color:var(--blue);display:flex;align-items:center;gap:9px}.pulse{width:7px;height:7px;border-radius:50%;background:#38c995;box-shadow:0 0 0 5px #38c9951c}.hero h1{font-size:clamp(40px,5vw,62px);line-height:1.1;letter-spacing:-2.6px;margin:22px 0 17px}.hero h1 span{color:var(--blue)}.hero-copy>p{color:var(--muted);font-size:16px;line-height:1.8;max-width:480px}.hero-actions{display:flex;gap:12px;margin-top:28px}.trust-line{font-size:11px;color:#7b89a0;margin-top:28px}.trust-line span{color:#16a878;font-weight:900;margin-right:6px}.hero-art{height:390px;position:relative;display:grid;place-items:center}.orbit{position:absolute;border:1px solid #cbdcff;border-radius:50%;transform:rotate(-20deg)}.orbit-one{width:360px;height:270px}.orbit-two{width:300px;height:350px;transform:rotate(58deg);border-style:dashed}.center-orb{width:180px;height:180px;border-radius:50%;background:linear-gradient(145deg,#fff,#e8f0ff);box-shadow:0 20px 60px #3b6bd329,inset 0 0 0 1px white;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1}.orb-icon{font-size:38px;color:var(--blue);margin-bottom:8px}.center-orb strong{font-size:15px}.center-orb small{color:var(--muted);font-size:10px;margin-top:5px}.float-card{position:absolute;z-index:2;display:flex;align-items:center;gap:12px;padding:13px 16px;background:#fff;border:1px solid #edf1f8;border-radius:14px;box-shadow:0 13px 35px #25457815;min-width:210px}.float-card strong,.float-card small{display:block}.float-card strong{font-size:12px}.float-card small{font-size:9px;color:#8996aa;margin-top:4px}.tile{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:11px}.purple{background:#f0eaff;color:#8057df}.blue{background:#e8f1ff;color:#3470ed;font-size:20px}.green{background:#e4f8f0;color:#19a876;font-size:20px}.card-pdf{top:30px;left:0}.card-image{top:145px;right:-12px}.card-shop{bottom:35px;left:20px}.stats-strip{padding:25px 10%;display:flex;justify-content:space-around;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.stats-strip div{display:flex;flex-direction:column;gap:5px}.stats-strip strong{font-size:13px}.stats-strip span{font-size:10px;color:var(--muted)}.section{padding:88px 8%}.section-heading{display:flex;align-items:end;justify-content:space-between;margin-bottom:35px}.section-heading h2{font-size:34px;letter-spacing:-1.2px;margin:10px 0}.section-heading p{color:var(--muted);font-size:13px;margin:0}.search-wrap{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:10px;padding:0 13px;width:250px;height:43px;color:#8b98ad}.search-wrap input{border:0;outline:0;width:100%;font-size:12px}.category-tabs{display:flex;gap:9px;margin-bottom:24px;flex-wrap:wrap}.category-tabs button{border:1px solid var(--line);background:white;color:#738098;border-radius:30px;padding:9px 17px;font-size:11px;font-weight:700;cursor:pointer}.category-tabs button.active{background:#eaf1ff;color:var(--blue);border-color:#dbe7ff}.tool-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.tool-card{border:1px solid var(--line);border-radius:14px;padding:20px;background:white;transition:.2s;min-height:174px}.tool-card:hover{transform:translateY(-4px);box-shadow:0 15px 35px #203e7110;border-color:#d7e3ff}.tool-icon{width:39px;height:39px;border-radius:11px;display:grid;place-items:center;background:#edf3ff;color:var(--blue);font-size:19px}.tool-card h3{font-size:14px;margin:15px 0 6px}.tool-card p{font-size:10px;color:var(--muted);line-height:1.6;min-height:31px}.tool-meta{display:flex;align-items:center;justify-content:space-between;margin-top:13px}.access{font-size:9px;color:#77849a;background:#f3f5f9;padding:5px 8px;border-radius:20px}.open-tool{font-size:10px;color:var(--blue);font-weight:800;border:0;background:none;cursor:pointer}.soft-section{background:#f7f9fe}.centered{display:block;text-align:center}.centered .eyebrow{justify-content:center}.centered p{margin-top:8px}.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:42px}.benefit{background:#fff;padding:28px;border:1px solid var(--line);border-radius:16px}.benefit-icon{font-size:24px}.benefit h3{font-size:15px;margin:17px 0 8px}.benefit p{font-size:12px;line-height:1.7;color:var(--muted)}.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1000px;margin:auto}.plan-card{border:1px solid var(--line);border-radius:17px;padding:28px;background:#fff;position:relative}.plan-card.featured{border:2px solid #4a7df0;box-shadow:0 15px 45px #2e62d215}.plan-label{font-size:9px;font-weight:800;letter-spacing:1.2px;color:var(--blue)}.plan-card h3{font-size:22px;margin:17px 0 8px}.price{font-size:22px;font-weight:800;letter-spacing:-.7px;min-height:29px}.plan-card p{font-size:11px;color:var(--muted);min-height:35px}.plan-card ul{padding:15px 0 18px 17px;color:#586780;font-size:11px;line-height:2.3}.cta-band{margin:0 8% 80px;padding:42px 5%;border-radius:20px;background:linear-gradient(110deg,#1d55d5,#4483f4);color:#fff;display:flex;align-items:center;justify-content:space-between}.cta-band .eyebrow{color:#cbdcff}.cta-band h2{font-size:27px;margin:10px 0}.cta-band p{font-size:12px;color:#dce7ff;margin:0}footer{padding:40px 8%;border-top:1px solid var(--line);display:flex;align-items:center;gap:25px;flex-wrap:wrap}footer p,footer>small{font-size:10px;color:var(--muted)}.footer-links{margin-left:auto;display:flex;gap:20px;font-size:11px;color:#71809a}.modal-backdrop{position:fixed;inset:0;background:#0d1b35a8;z-index:40;display:grid;place-items:center;padding:20px}.modal-backdrop[hidden]{display:none}.modal{width:min(100%,430px);background:white;border-radius:18px;padding:32px;position:relative;max-height:90vh;overflow:auto}.modal h2{font-size:25px;margin:12px 0 5px}.modal>p{font-size:12px;color:var(--muted);margin-bottom:22px}.modal-close{position:absolute;right:18px;top:14px;border:0;background:none;font-size:26px;color:#7b879a;cursor:pointer}.modal label{display:block;font-size:11px;font-weight:700;margin:13px 0;color:#52617a}.modal label input:not([type=checkbox]){display:block;width:100%;border:1px solid var(--line);border-radius:9px;padding:12px;margin-top:7px;outline-color:#9bb9ff}.modal .check-label{display:flex;gap:8px;align-items:center;font-weight:500}.text-button{border:0;background:none;color:var(--blue);font-size:11px;display:block;margin:16px auto 0;cursor:pointer}.notice{font-size:11px;color:#bd4b4b;margin-top:12px}.toast{position:fixed;bottom:22px;right:22px;background:#142544;color:#fff;padding:13px 18px;border-radius:10px;font-size:12px;box-shadow:0 10px 30px #0002;z-index:60;opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none}.toast.show{opacity:1;transform:translateY(0)}@media(max-width:1000px){.topbar{padding:0 4%}.topbar nav{gap:13px}.hero{padding-left:6%;padding-right:6%}.tool-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:760px){.topbar{height:70px}.mobile-toggle{display:block}.topbar nav{display:none;position:absolute;top:70px;left:0;right:0;background:white;padding:20px 6%;box-shadow:0 15px 25px #1a315115;flex-direction:column;align-items:stretch}.topbar nav.open{display:flex}.topbar nav a{padding:7px}.hero{grid-template-columns:1fr;padding:60px 7% 35px;gap:5px}.hero-art{height:330px;max-width:500px;width:100%;margin:auto}.hero h1{font-size:45px}.stats-strip{gap:18px;padding:22px 7%;flex-wrap:wrap}.stats-strip div{min-width:40%}.section{padding:65px 7%}.section-heading{display:block}.search-wrap{margin-top:20px;width:100%}.tool-grid{grid-template-columns:repeat(2,1fr)}.benefit-grid,.pricing-grid{grid-template-columns:1fr}.cta-band{margin:0 5% 55px;display:block}.cta-band .btn{margin-top:22px}.footer-links{margin:0;flex-wrap:wrap}footer{gap:15px}}@media(max-width:440px){.tool-grid{grid-template-columns:1fr}.hero h1{font-size:39px}.hero-art{transform:scale(.88);transform-origin:top center;margin-bottom:-25px}.section-heading h2{font-size:29px}.modal{padding:25px 20px}}
+
+========================================================================================
+FILE: script.js
+========================================================================================
+
+/* CeylonToolza frontend. Configure Supabase in config.js before enabling account features. */
+const SUPABASE_URL = window.CT_SUPABASE_URL || "";
+const SUPABASE_ANON_KEY = window.CT_SUPABASE_ANON_KEY || "";
+const supabaseClient = (SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase)
+  ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+const toolCatalog = [
+ ["PDF Merge","Combine multiple PDF files into one document.","PDF","▤","Free"],
+ ["PDF Split","Separate selected pages from a PDF.","PDF","✂","Free"],
+ ["PDF Compress","Reduce PDF file size.","PDF","⇣","Pro"],
+ ["PDF to Image","Convert PDF pages into image files.","PDF","▧","Pro"],
+ ["Image to PDF","Create a PDF from your images.","PDF","▣","Free"],
+ ["Image Resize","Resize images to your required dimensions.","Image","↔","Free"],
+ ["Image Crop","Crop an image to a selected area.","Image","⌗","Free"],
+ ["Image Convert","Convert between supported image formats.","Image","⇄","Free"],
+ ["Image Compress","Optimize image file size.","Image","◈","Pro"],
+ ["Background Removal","Remove image backgrounds with an integrated service.","Image","✧","Ultimate"],
+ ["CV Maker","Create a clean, professional CV.","Documents","▣","Pro"],
+ ["Letter Maker","Prepare business and personal letters.","Documents","✉","Free"],
+ ["Invoice Maker","Create itemized invoices.","Documents","▤","Pro"],
+ ["Certificate Maker","Design printable certificates.","Documents","▧","Pro"],
+ ["Business Card Maker","Create business card layouts.","Documents","▦","Pro"],
+ ["ID Card Maker","Prepare ID card designs.","Documents","▣","Pro"],
+ ["QR Code Generator","Generate QR codes for text and links.","Other","▦","Free"],
+ ["Barcode Generator","Generate product barcodes.","Other","▥","Pro"],
+ ["Price Calculator","Calculate prices, discounts and totals.","Other","∑","Free"],
+ ["Text Tools","Useful tools for everyday text editing.","Other","T","Free"],
+ ["Word Counter","Count words, characters and paragraphs.","Other","≡","Free"],
+ ["Case Converter","Convert text case in one click.","Other","Aa","Free"]
+];
+const i18n = {
+ en:{navHome:"Home",navTools:"All Tools",navPricing:"Pricing",navAbout:"About Us",navContact:"Contact",login:"Log in",getStarted:"Get Started",heroTitle:"Everything You Need. One Smart Platform.",heroText:"Create, convert, design and manage your digital work with CeylonToolza.",explore:"Explore Tools →"},
+ si:{navHome:"මුල් පිටුව",navTools:"සියලු මෙවලම්",navPricing:"මිල ගණන්",navAbout:"අප ගැන",navContact:"සම්බන්ධ වන්න",login:"පිවිසෙන්න",getStarted:"ආරම්භ කරන්න",heroTitle:"ඔබට අවශ්‍ය සියල්ල. එකම ස්මාර්ට් වේදිකාවක.",heroText:"CeylonToolza සමඟ ඔබේ ඩිජිටල් වැඩ නිර්මාණය, පරිවර්තනය සහ කළමනාකරණය කරන්න.",explore:"මෙවලම් බලන්න →"}
+};
+let activeCategory="All", authMode="signup";
+const $ = id => document.getElementById(id);
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function renderTools(){
+ const q=($("toolSearch").value||"").toLowerCase();
+ const items=toolCatalog.filter(t=>(activeCategory==="All"||t[2]===activeCategory)&&(`${t[0]} ${t[1]}`).toLowerCase().includes(q));
+ $("toolGrid").innerHTML=items.length?items.map(t=>`<article class="tool-card"><div class="tool-icon">${t[3]}</div><h3>${escapeHTML(t[0])}</h3><p>${escapeHTML(t[1])}</p><div class="tool-meta"><span class="access">${t[4]}</span><button class="open-tool" data-tool="${escapeHTML(t[0])}">Open tool →</button></div></article>`).join(""):`<p>No tools match your search.</p>`;
+ document.querySelectorAll(".open-tool").forEach(b=>b.addEventListener("click",()=>openTool(b.dataset.tool)));
+}
+function toast(msg){const el=$("toast");el.textContent=msg;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),2800);}
+function openTool(name){toast(`${name}: tool interface will be enabled when its processing module is configured.`);}
+function showAuth(mode){authMode=mode;$("authModal").hidden=false;updateAuthMode();}
+function updateAuthMode(){
+ const signup=authMode==="signup";
+ $("authTitle").textContent=signup?"Create your account":"Welcome back";
+ $("authMessage").textContent=signup?"Register to create your CeylonToolza workspace.":"Log in to access your workspace.";
+ $("nameLabel").hidden=!signup;$("confirmLabel").hidden=!signup;$("termsCheck").parentElement.hidden=!signup;
+ $("authSubmit").textContent=signup?"Create account":"Log in";
+ $("switchAuth").textContent=signup?"Already have an account? Log in":"New to CeylonToolza? Create an account";
+ $("authNotice").textContent="";
+}
+async function submitAuth(e){
+ e.preventDefault();const email=$("email").value.trim(),password=$("password").value;
+ if(!supabaseClient){$("authNotice").textContent="Authentication is not configured yet. Add your Supabase URL and anon key in config.js.";return;}
+ try{
+  let result;
+  if(authMode==="signup"){
+   if(password!==$("confirmPassword").value){$("authNotice").textContent="Passwords do not match.";return;}
+   if(!$("termsCheck").checked){$("authNotice").textContent="Please accept the Terms and Conditions.";return;}
+   result=await supabaseClient.auth.signUp({email,password,options:{data:{full_name:$("fullName").value.trim()}}});
+  }else result=await supabaseClient.auth.signInWithPassword({email,password});
+  if(result.error)throw result.error;
+  $("authNotice").textContent=authMode==="signup"?"Check your email to verify your account.":"Login successful.";
+ }catch(err){$("authNotice").textContent=err.message||"Authentication failed.";}
+}
+function applyLanguage(lang){
+ document.documentElement.lang=lang;
+ document.querySelectorAll("[data-i18n]").forEach(el=>{const key=el.dataset.i18n;if(i18n[lang][key])el.textContent=i18n[lang][key];});
+ try{localStorage.setItem("ct-language",lang);}catch(_){}
+}
+async function loadPublicPlans(){
+ if(!supabaseClient)return;
+ const {data,error}=await supabaseClient.from("subscription_plans").select("code,monthly_price,yearly_price,currency,is_active").eq("is_active",true);
+ if(error){console.warn("Plan prices unavailable:",error.message);return;}
+ data?.forEach(p=>{const el=p.code==="pro"?$("proPrice"):p.code==="ultimate"?$("ultimatePrice"):null;if(el)el.textContent=p.monthly_price==null?"Contact us":`${p.currency||"LKR"} ${Number(p.monthly_price).toLocaleString()}/month`;});
+}
+document.addEventListener("DOMContentLoaded",()=>{
+ $("year").textContent=new Date().getFullYear();renderTools();
+ $("toolSearch").addEventListener("input",renderTools);
+ $("categoryTabs").addEventListener("click",e=>{if(e.target.matches("button[data-category]")){activeCategory=e.target.dataset.category;document.querySelectorAll("#categoryTabs button").forEach(b=>b.classList.toggle("active",b===e.target));renderTools();}});
+ $("mobileToggle").addEventListener("click",()=>$("mainNav").classList.toggle("open"));
+ ["loginBtn","startBtn","heroStart","ctaStart"].forEach(id=>$(id).addEventListener("click",()=>showAuth(id==="loginBtn"?"login":"signup")));
+ $("closeModal").addEventListener("click",()=>$("authModal").hidden=true);
+ $("authModal").addEventListener("click",e=>{if(e.target===$("authModal"))$("authModal").hidden=true;});
+ $("switchAuth").addEventListener("click",()=>{authMode=authMode==="signup"?"login":"signup";updateAuthMode();});
+ $("authForm").addEventListener("submit",submitAuth);
+ $("languageSelect").addEventListener("change",e=>applyLanguage(e.target.value));
+ try{const saved=localStorage.getItem("ct-language");if(saved){$("languageSelect").value=saved;applyLanguage(saved);}}catch(_){}
+ document.querySelectorAll("[data-plan]").forEach(b=>b.addEventListener("click",()=>showAuth("signup")));
+ loadPublicPlans();
+ if(supabaseClient)supabaseClient.auth.onAuthStateChange((_event,session)=>{if(session)toast("Signed in. Dashboard modules can now load from your account.");});
+});
+
+========================================================================================
+FILE: config.example.js
+========================================================================================
+
+// Copy to config.js and insert your PUBLIC Supabase project URL and anon/publishable key.
+// Never put a service-role key or any other secret in this file.
+window.CT_SUPABASE_URL = "https://YOUR-PROJECT.supabase.co";
+window.CT_SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+
+========================================================================================
+FILE: supabase/schema.sql
+========================================================================================
+
+-- CeylonToolza initial relational schema (run in Supabase SQL Editor).
+create extension if not exists pgcrypto;
+
+create table if not exists public.profiles (
+ id uuid primary key references auth.users(id) on delete cascade,
+ full_name text,
+ email text,
+ status text not null default 'active' check(status in ('active','suspended')),
+ preferred_language text not null default 'en' check(preferred_language in ('en','si')),
+ created_at timestamptz not null default now(),
+ updated_at timestamptz not null default now()
+);
+create table if not exists public.user_roles (
+ user_id uuid primary key references auth.users(id) on delete cascade,
+ role text not null default 'customer' check(role in ('customer','shop_owner','owner')),
+ created_at timestamptz not null default now()
+);
+create table if not exists public.subscription_plans (
+ id uuid primary key default gen_random_uuid(),
+ code text unique not null check(code in ('free','pro','ultimate')),
+ name text not null,
+ monthly_price numeric(12,2),
+ yearly_price numeric(12,2),
+ currency text not null default 'LKR',
+ daily_usage_limit integer not null default 10 check(daily_usage_limit>=0),
+ features jsonb not null default '{}'::jsonb,
+ is_active boolean not null default true,
+ updated_at timestamptz not null default now()
+);
+insert into public.subscription_plans(code,name,monthly_price,yearly_price,daily_usage_limit)
+values ('free','Free',0,0,10),('pro','Pro',null,null,100),('ultimate','Ultimate',null,null,1000)
+on conflict(code) do nothing;
+
+create table if not exists public.subscriptions (
+ id uuid primary key default gen_random_uuid(),
+ user_id uuid not null references auth.users(id),
+ plan_id uuid not null references public.subscription_plans(id),
+ status text not null default 'pending_payment' check(status in ('pending_payment','active','expired','rejected')),
+ billing_period text not null check(billing_period in ('monthly','yearly')),
+ starts_at timestamptz, expires_at timestamptz,
+ created_at timestamptz not null default now()
+);
+create table if not exists public.payments (
+ id uuid primary key default gen_random_uuid(),
+ user_id uuid not null references auth.users(id),
+ subscription_id uuid references public.subscriptions(id),
+ plan_code text not null check(plan_code in ('pro','ultimate')),
+ billing_period text not null check(billing_period in ('monthly','yearly')),
+ amount numeric(12,2) not null check(amount>=0),
+ payment_date date not null,
+ transaction_reference text not null,
+ status text not null default 'pending' check(status in ('pending','approved','rejected')),
+ rejection_reason text,
+ reviewed_by uuid references auth.users(id),
+ reviewed_at timestamptz,
+ created_at timestamptz not null default now(),
+ unique(user_id,transaction_reference)
+);
+create table if not exists public.payment_receipts (
+ id uuid primary key default gen_random_uuid(),
+ payment_id uuid not null unique references public.payments(id) on delete cascade,
+ user_id uuid not null references auth.users(id),
+ storage_path text not null,
+ original_filename text,
+ content_type text not null check(content_type in ('image/jpeg','image/png','application/pdf')),
+ file_size bigint not null check(file_size<=5242880),
+ created_at timestamptz not null default now()
+);
+create table if not exists public.bank_settings (
+ id integer primary key default 1 check(id=1),
+ bank_name text, account_holder text, account_number text, branch text, instructions text,
+ updated_at timestamptz not null default now()
+);
+create table if not exists public.tools (
+ id uuid primary key default gen_random_uuid(), slug text unique not null, name text not null,
+ category text not null, description text, required_plan text not null default 'free'
+ check(required_plan in ('free','pro','ultimate')), is_enabled boolean not null default true
+);
+create table if not exists public.tool_usage (
+ id uuid primary key default gen_random_uuid(), user_id uuid not null references auth.users(id),
+ tool_slug text not null, used_at timestamptz not null default now()
+);
+create table if not exists public.shops (
+ id uuid primary key default gen_random_uuid(), owner_id uuid not null unique references auth.users(id),
+ name text not null, logo_path text, address text, contact_number text, currency text not null default 'LKR',
+ created_at timestamptz not null default now(), updated_at timestamptz not null default now()
+);
+create table if not exists public.shop_products (
+ id uuid primary key default gen_random_uuid(), shop_id uuid not null references public.shops(id) on delete cascade,
+ name text not null, description text, category text, image_path text,
+ selling_price numeric(12,2) not null check(selling_price>=0),
+ cost_price numeric(12,2) check(cost_price is null or cost_price>=0),
+ is_active boolean not null default true, created_at timestamptz not null default now(),
+ updated_at timestamptz not null default now()
+);
+create table if not exists public.sales (
+ id uuid primary key default gen_random_uuid(), shop_id uuid not null references public.shops(id),
+ created_by uuid not null references auth.users(id), customer_name text, customer_contact text,
+ payment_method text, subtotal numeric(12,2) not null, discount numeric(12,2) not null default 0,
+ charges numeric(12,2) not null default 0, total numeric(12,2) not null,
+ status text not null default 'completed' check(status in ('completed','cancelled','adjusted')),
+ idempotency_key uuid not null, created_at timestamptz not null default now(),
+ unique(shop_id,idempotency_key)
+);
+create table if not exists public.sale_items (
+ id uuid primary key default gen_random_uuid(), sale_id uuid not null references public.sales(id) on delete cascade,
+ product_id uuid references public.shop_products(id), product_name text not null,
+ quantity numeric(12,3) not null check(quantity>0), unit_price numeric(12,2) not null,
+ unit_cost numeric(12,2), line_total numeric(12,2) not null
+);
+create table if not exists public.sale_adjustments (
+ id uuid primary key default gen_random_uuid(), sale_id uuid not null references public.sales(id),
+ shop_id uuid not null references public.shops(id), adjustment_type text not null check(adjustment_type in ('correction','cancellation','refund')),
+ amount numeric(12,2) not null, reason text not null, created_at timestamptz not null default now()
+);
+create table if not exists public.customer_records (
+ id uuid primary key default gen_random_uuid(), shop_id uuid not null references public.shops(id),
+ name text not null, contact text, created_at timestamptz not null default now()
+);
+create table if not exists public.admin_audit_logs (
+ id uuid primary key default gen_random_uuid(), actor_id uuid references auth.users(id),
+ action text not null, target_type text, target_id text, details jsonb not null default '{}'::jsonb,
+ created_at timestamptz not null default now()
+);
+create table if not exists public.website_settings (
+ key text primary key, value jsonb not null, updated_at timestamptz not null default now()
+);
+
+-- New users get a profile and customer role. Owner role must be granted out-of-band by trusted operator.
+create or replace function public.handle_new_user() returns trigger language plpgsql security definer set search_path=public as $$
+begin
+ insert into public.profiles(id,email,full_name) values(new.id,new.email,new.raw_user_meta_data->>'full_name');
+ insert into public.user_roles(user_id,role) values(new.id,'customer');
+ return new;
+end; $$;
+drop trigger if exists on_auth_user_created on auth.users;
+create trigger on_auth_user_created after insert on auth.users for each row execute procedure public.handle_new_user();
+
+create or replace function public.is_owner() returns boolean language sql stable security definer set search_path=public as $$
+ select exists(select 1 from public.user_roles where user_id=auth.uid() and role='owner');
+$$;
+create or replace function public.owns_shop(target_shop uuid) returns boolean language sql stable security definer set search_path=public as $$
+ select exists(select 1 from public.shops where id=target_shop and owner_id=auth.uid());
+$$;
+
+
+========================================================================================
+FILE: supabase/policies.sql
+========================================================================================
+
+-- Enable RLS on every user/private table.
+alter table public.profiles enable row level security;
+alter table public.user_roles enable row level security;
+alter table public.subscription_plans enable row level security;
+alter table public.subscriptions enable row level security;
+alter table public.payments enable row level security;
+alter table public.payment_receipts enable row level security;
+alter table public.bank_settings enable row level security;
+alter table public.tools enable row level security;
+alter table public.tool_usage enable row level security;
+alter table public.shops enable row level security;
+alter table public.shop_products enable row level security;
+alter table public.sales enable row level security;
+alter table public.sale_items enable row level security;
+alter table public.sale_adjustments enable row level security;
+alter table public.customer_records enable row level security;
+alter table public.admin_audit_logs enable row level security;
+alter table public.website_settings enable row level security;
+
+create policy "profiles self or owner read" on public.profiles for select using(id=auth.uid() or public.is_owner());
+create policy "profiles self update" on public.profiles for update using(id=auth.uid()) with check(id=auth.uid());
+create policy "roles self read" on public.user_roles for select using(user_id=auth.uid() or public.is_owner());
+create policy "plans public read active" on public.subscription_plans for select using(is_active=true or public.is_owner());
+create policy "owner manages plans" on public.subscription_plans for all using(public.is_owner()) with check(public.is_owner());
+create policy "subscriptions own read" on public.subscriptions for select using(user_id=auth.uid() or public.is_owner());
+create policy "payments own read and insert" on public.payments for select using(user_id=auth.uid() or public.is_owner());
+create policy "customer submits own payment" on public.payments for insert with check(user_id=auth.uid() and status='pending');
+create policy "owner reviews payments" on public.payments for update using(public.is_owner()) with check(public.is_owner());
+create policy "receipts owner or customer read" on public.payment_receipts for select using(user_id=auth.uid() or public.is_owner());
+create policy "customer adds own receipt" on public.payment_receipts for insert with check(user_id=auth.uid());
+create policy "bank settings public read" on public.bank_settings for select using(true);
+create policy "owner edits bank settings" on public.bank_settings for all using(public.is_owner()) with check(public.is_owner());
+create policy "enabled tools public read" on public.tools for select using(is_enabled=true or public.is_owner());
+create policy "owner manages tools" on public.tools for all using(public.is_owner()) with check(public.is_owner());
+create policy "usage own read" on public.tool_usage for select using(user_id=auth.uid() or public.is_owner());
+create policy "usage own insert" on public.tool_usage for insert with check(user_id=auth.uid());
+create policy "shop owner manages own shop" on public.shops for all using(owner_id=auth.uid() or public.is_owner()) with check(owner_id=auth.uid() or public.is_owner());
+create policy "products isolated by shop" on public.shop_products for all using(public.owns_shop(shop_id) or public.is_owner()) with check(public.owns_shop(shop_id) or public.is_owner());
+create policy "sales isolated by shop" on public.sales for all using(public.owns_shop(shop_id) or public.is_owner()) with check(public.owns_shop(shop_id) or public.is_owner());
+create policy "sale items isolated" on public.sale_items for all using(exists(select 1 from public.sales s where s.id=sale_id and (public.owns_shop(s.shop_id) or public.is_owner()))) with check(exists(select 1 from public.sales s where s.id=sale_id and (public.owns_shop(s.shop_id) or public.is_owner())));
+create policy "adjustments isolated" on public.sale_adjustments for all using(public.owns_shop(shop_id) or public.is_owner()) with check(public.owns_shop(shop_id) or public.is_owner());
+create policy "customers isolated" on public.customer_records for all using(public.owns_shop(shop_id) or public.is_owner()) with check(public.owns_shop(shop_id) or public.is_owner());
+create policy "audit owner read" on public.admin_audit_logs for select using(public.is_owner());
+create policy "audit owner insert" on public.admin_audit_logs for insert with check(public.is_owner());
+create policy "website settings public read" on public.website_settings for select using(true);
+create policy "owner manages website settings" on public.website_settings for all using(public.is_owner()) with check(public.is_owner());
+
+-- Storage: create a PRIVATE bucket named payment-receipts in Supabase Dashboard.
+-- Do not make it public. Add policies on storage.objects:
+create policy "customer uploads own receipt folder" on storage.objects for insert to authenticated
+ with check(bucket_id='payment-receipts' and (storage.foldername(name))[1]=auth.uid()::text);
+create policy "customer or owner reads receipt" on storage.objects for select to authenticated
+ using(bucket_id='payment-receipts' and ((storage.foldername(name))[1]=auth.uid()::text or public.is_owner()));
+
+
+========================================================================================
+FILE: supabase/functions/approve-payment/index.ts
+========================================================================================
+
+// Supabase Edge Function: approve-payment
+// Deploy with `supabase functions deploy approve-payment`.
+// Invoke only from an authenticated owner session. Service key stays server-side.
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+Deno.serve(async (req) => {
+  if (req.method !== "POST") return new Response("Method not allowed", { status: 405 });
+  const url = Deno.env.get("SUPABASE_URL")!;
+  const anon = Deno.env.get("SUPABASE_ANON_KEY")!;
+  const service = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+  const auth = req.headers.get("Authorization") || "";
+  const userClient = createClient(url, anon, { global: { headers: { Authorization: auth } } });
+  const { data: { user }, error: userErr } = await userClient.auth.getUser();
+  if (userErr || !user) return Response.json({ error: "Unauthorized" }, { status: 401 });
+  const admin = createClient(url, service);
+  const { data: role } = await admin.from("user_roles").select("role").eq("user_id", user.id).single();
+  if (role?.role !== "owner") return Response.json({ error: "Forbidden" }, { status: 403 });
+  const { payment_id, decision, rejection_reason } = await req.json();
+  if (!payment_id || !["approved", "rejected"].includes(decision)) return Response.json({ error: "Invalid request" }, { status: 400 });
+  const { data: payment, error } = await admin.from("payments").select("*").eq("id", payment_id).single();
+  if (error || !payment) return Response.json({ error: "Payment not found" }, { status: 404 });
+  if (payment.status !== "pending") return Response.json({ error: "Payment is no longer pending" }, { status: 409 });
+  const now = new Date();
+  const expiry = new Date(now); expiry.setMonth(expiry.getMonth() + (payment.billing_period === "yearly" ? 12 : 1));
+  const { error: updateErr } = await admin.from("payments").update({
+    status: decision, rejection_reason: decision === "rejected" ? (rejection_reason || "Not specified") : null,
+    reviewed_by: user.id, reviewed_at: now.toISOString()
+  }).eq("id", payment_id).eq("status", "pending");
+  if (updateErr) return Response.json({ error: updateErr.message }, { status: 500 });
+  if (decision === "approved") {
+    const { data: plan } = await admin.from("subscription_plans").select("id").eq("code", payment.plan_code).single();
+    const { error: subErr } = await admin.from("subscriptions").insert({
+      user_id: payment.user_id, plan_id: plan.id, status: "active",
+      billing_period: payment.billing_period, starts_at: now.toISOString(), expires_at: expiry.toISOString()
+    });
+    if (subErr) return Response.json({ error: "Payment approved but subscription activation failed; investigate immediately." }, { status: 500 });
+  }
+  await admin.from("admin_audit_logs").insert({ actor_id: user.id, action: `payment_${decision}`, target_type: "payment", target_id: payment_id });
+  return Response.json({ ok: true, status: decision });
+});
+
+========================================================================================
+FILE: vercel.json
+========================================================================================
+
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    { "source": "/(.*)", "headers": [
+      { "key": "X-Content-Type-Options", "value": "nosniff" },
+      { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+      { "key": "X-Frame-Options", "value": "DENY" }
+    ]}
+  ]
+}
+
+========================================================================================
+FILE: .env.example
+========================================================================================
+
+# Server-side only (never commit real values)
+SUPABASE_URL=https://YOUR-PROJECT.supabase.co
+SUPABASE_ANON_KEY=YOUR_PUBLIC_ANON_KEY
+SUPABASE_SERVICE_ROLE_KEY=SERVER_SIDE_ONLY_SECRET
+
+========================================================================================
+FILE: README.md
+========================================================================================
+
+# CeylonToolza
+
+Premium bilingual SaaS starter for **CeylonToolza — Your Digital Tools, All in One Place.**
+
+## Included
+- Responsive marketing homepage and searchable tool catalogue.
+- English/Sinhala language toggle.
+- Supabase Auth integration scaffold (email/password signup and login).
+- PostgreSQL schema for plans, subscriptions, bank-transfer payment requests, private receipts, shops, products, sales, line items, adjustments and audit logs.
+- RLS policy starter and owner-only payment approval Edge Function example.
+- Vercel headers configuration and legal-page draft templates.
+
+## Important implementation status
+This repository is a **starter implementation**, not a finished production SaaS. The public landing page and catalogue UI work. The auth form becomes functional after Supabase configuration. The remaining tool processors, payment submission interface, full owner/admin dashboard, shop dashboard, report UI, notification delivery and complete Sinhala translations still need implementation and testing. Tool cards intentionally do not pretend that unimplemented processors have completed work.
+
+## 1. Supabase setup
+1. Create a Supabase project.
+2. In SQL Editor, run `supabase/schema.sql`, then `supabase/policies.sql`.
+3. Create a **private** Storage bucket named `payment-receipts` (5 MB file limit; allow only JPEG, PNG and PDF).
+4. Configure Auth email confirmation and redirect URLs for your local and production domains.
+5. Copy `config.example.js` to `config.js`; add the project URL and anon key. Never add the service-role key to browser code.
+6. Add `config.js` to `.gitignore` if it contains project-specific settings.
+7. Set the Edge Function secrets in Supabase, then deploy `approve-payment`.
+8. Create the first owner account through Supabase Auth, then grant the role using a trusted SQL session:
+   `insert into public.user_roles(user_id, role) values ('AUTH_USER_UUID','owner') on conflict(user_id) do update set role='owner';`
+   Do not expose owner-role assignment in public UI.
+
+## 2. Run locally
+Serve this directory with any static server (for example VS Code Live Server). Opening `index.html` directly may restrict browser features.
+
+## 3. GitHub and Vercel
+1. Create a private GitHub repository and push this project.
+2. Import the repository in Vercel.
+3. Framework preset: Other; build command: none; output directory: `.`.
+4. Add the required public Supabase URL and anon key through the deployed config strategy. For a static site, publish a deployment-specific `config.js` generated from Vercel environment variables or replace the config loading approach with a secure build step. Only the anon key belongs in the browser.
+5. Add `ceylontoolza.com` in Vercel and configure the DNS records exactly as Vercel instructs.
+6. Add the production URL to Supabase Auth redirect URLs.
+
+## 4. Critical next modules before launch
+- Payment request form: read current plan price and bank details; validate receipt type/size; upload to private bucket under `<auth.uid()>/<payment-id>/receipt.ext`; create payment and receipt rows; never activate from the browser.
+- Admin dashboard: server-verified owner access; review receipts via short-lived signed URLs; approve/reject only through the Edge Function; add audit trail and notification service.
+- Shop dashboard: shop onboarding; product CRUD; sale creation through a database transaction/RPC; snapshot product name, unit price and cost into `sale_items`; enforce idempotency keys; use adjustments for refunds/corrections.
+- Income reports: query completed sales and adjustments by shop/date range; revenue and profit must remain separate; print from saved records, never from UI-only values.
+- Tool processors: implement each tool with a tested browser library or a secure backend/API. Background removal and advanced PDF processing may require a vetted service. Add per-user quota checks server-side.
+- Full bilingual coverage: centralize every label, validation message, notification and dashboard string in translation dictionaries.
+
+## Security notes
+The SQL is a baseline and requires a security review before production. Test every RLS policy using separate customer, shop-owner and owner accounts. Restrict bank-account details if they should not be publicly readable. Add transactional RPCs for payment approval and sale writes to avoid partial updates. Consider a dedicated owner table/claim strategy and verify authorization server-side. Do not rely on hiding dashboard links for security.
+
+
+========================================================================================
+FILE: pages/privacy.html
+========================================================================================
+
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Privacy Policy | CeylonToolza</title><link rel="stylesheet" href="../style.css"><main class="section"><a href="../index.html">← Home</a><h1>Privacy Policy</h1><p><strong>Draft template:</strong> Replace this page with a reviewed policy before launch.</p><h2>Information we collect</h2><p>Account details, service usage, shop records and payment verification information necessary to provide the service.</p><h2>How information is used</h2><p>To operate accounts, process tool requests, administer subscriptions and support users.</p><h2>Security and retention</h2><p>Access controls and private storage should be configured as described in the deployment guide. Define retention periods and user rights with qualified legal advice.</p><h2>Contact</h2><p>[Add business contact information]</p></main></html>
+
+========================================================================================
+FILE: pages/terms.html
+========================================================================================
+
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Terms | CeylonToolza</title><link rel="stylesheet" href="../style.css"><main class="section"><a href="../index.html">← Home</a><h1>Terms and Conditions</h1><p><strong>Draft template:</strong> Replace with legally reviewed terms before launch.</p><h2>Using the service</h2><p>Users must provide accurate account details and use tools lawfully.</p><h2>Subscriptions and payments</h2><p>Paid access begins only after an administrator verifies and approves the bank transfer.</p><h2>Refunds and support</h2><p>[Publish a clear refund, cancellation and support policy before accepting payments.]</p><h2>Contact</h2><p>[Add business contact information]</p></main></html>
+
+
+
